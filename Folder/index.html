@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PICT Meeting Logger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #1a73e8;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #444;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0d62cb;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            input, select, button {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <img src="pic.jpg" alt="PICT Logo" style="height: 40px; vertical-align: middle; margin-right: 5px;">
+            PICT
+        </h1>
+        <form id="meetingForm">
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="TNP">TNP</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" name="topic" required />
+            </div>
+
+            <div class="form-group">
+                <label for="preferredTime">Preferred Time</label>
+                <select id="preferredTime" name="preferredTime" required>
+                    <option value="" disabled selected>Select preferred time</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="9:15 AM">9:15 AM</option>
+                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="9:45 AM">9:45 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:15 AM">10:15 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="10:45 AM">10:45 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:15 AM">11:15 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="11:45 AM">11:45 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="12:15 PM">12:15 PM</option>
+                    <option value="12:30 PM">12:30 PM</option>
+                    <!-- Lunch Break -->
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="2:15 PM">2:15 PM</option>
+                    <option value="2:30 PM">2:30 PM</option>
+                    <option value="2:45 PM">2:45 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="3:15 PM">3:15 PM</option>
+                    <option value="3:30 PM">3:30 PM</option>
+                    <option value="3:45 PM">3:45 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <select id="duration" name="duration" required>
+                    <option value="" disabled selected>Select duration</option>
+                    <option value="5">5 mins</option>
+                    <option value="10">10 mins</option>
+                    <option value="15">15 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="25">25 mins</option>
+                    <option value="30">30 mins</option>
+                    <option value="35">35 mins</option>
+                    <option value="40">40 mins</option>
+                    <option value="45">45 mins</option>
+                    <option value="50">50 mins</option>
+                    <option value="55">55 mins</option>
+                    <option value="60">60 mins</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contactInfo">Contact Info (optional)</label>
+                <input type="text" id="contactInfo" name="contactInfo" />
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        Created by PICT students
+    </footer>
+
+    <script>
+        document.getElementById("meetingForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+
+            const data = {
+            role: form.role.value,
+            Name: form.name.value,
+            topic: form.topic.value,
+            pref_time: form.preferredTime.value,
+            duration: form.duration.value,
+            contact_info: form.contactInfo.value
+            };
+
+            fetch("https://sachinpandepict2.app.n8n.cloud/webhook/2ed4fd52-f0d2-49a6-982b-d31051e0160f", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+            })
+            .then(async res => {
+            const responseText = await res.text();
+            console.log("Response status:", res.status);
+            console.log("Response text:", responseText);
+            
+            if (res.ok) {
+                alert("Form submitted successfully!");
+                form.reset();
+            } else {
+                alert("Form submitted successfully!");
+            }
+            })
+            .catch(err => {
+            console.error("Error:", err);
+            alert("Something went wrong: " + err.message);
+        });
+        });
+    </script>
+</body>
+</html>
